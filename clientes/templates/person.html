@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load filters %}
+{% load my_tags %}
 
 {% block title %} Administracao {% endblock %}
 
@@ -36,7 +37,8 @@
     <br>
     {{ teste_filter | my_filter }} <br>
     {{ 1.1191 | arredonda:2 }}
-
+    {% current_time "%Y-%m-%d %I:%M %p" as the_time %}
+    {{ the_time }}
 {% endblock %}
 
 {% block footer %}
