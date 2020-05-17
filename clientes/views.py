@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-
+from django.urls import reverse_lazy
 from .models import Person
 from .forms import PersonForm
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 @login_required
 def persons_list(request):
     persons = Person.objects.all()
     return render(request, 'person.html', {'persons': persons})
-
 
 @login_required
 def persons_new(request):
@@ -20,7 +19,6 @@ def persons_new(request):
         form.save()
         return redirect('person_list')
     return render(request, 'person_form.html', {'form': form})
-
 
 @login_required
 def persons_update(request, id):
@@ -33,7 +31,6 @@ def persons_update(request, id):
 
     return render(request, 'person_form.html', {'form': form})
 
-
 @login_required
 def persons_delete(request, id):
     person = get_object_or_404(Person, pk=id)
@@ -45,13 +42,11 @@ def persons_delete(request, id):
     return render(request, 'person_delete_confirm.html', {'person': person})
 
 # CLASS BASED VIEWS
-
 class PersonList(ListView):
     model = Person
 
 class PersonDetail(DetailView):
     model = Person
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
@@ -60,4 +55,15 @@ class PersonDetail(DetailView):
 class PersonCreate(CreateView):
     model = Person
     fields = ['first_name','last_name','age','salary','bio','photo']
-    success_url = '/clientes/person_list'
+    #success_url = reverse_lazy('person_list_cbv')
+    def get_success_url(self):
+        return reverse_lazy('person_list_cbv')
+
+class PersonUpdate(UpdateView):
+    model = Person
+    fields = ['first_name', 'last_name', 'age', 'salary', 'bio', 'photo']
+    success_url =  reverse_lazy('person_list_cbv')
+
+class PersonDelete(DeleteView):
+    model = Person
+    success_url =  reverse_lazy('person_list_cbv')
