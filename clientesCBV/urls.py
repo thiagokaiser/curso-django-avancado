@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import PersonList, PersonDetail
 from .views import PersonCreate, PersonUpdate, PersonDelete
-from .views import TesteView, TesteTemplateView
+from .views import TesteView, TesteTemplateView, ProdutoBulk
 
 app_name = 'clientesCBV'
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('delete/<int:pk>/', PersonDelete.as_view(), name="person_delete_cbv"),
     path('templateview/', TesteTemplateView.as_view()),
     path('view/', TesteView.as_view()),
+    path('produto_bulk/', ProdutoBulk.as_view(), name='produto_bulk'),
 ]

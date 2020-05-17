@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.urls import reverse_lazy
-from clientesFBV.models import Person
+from clientesFBV.models import Person, Produto
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, View
 
 class PersonList(ListView):
@@ -50,3 +50,15 @@ class TesteView(View):
 
     def post(self, request):
         return HttpResponse('result post')
+
+class ProdutoBulk(View):
+    def get(self, request):
+        produtos = ['banana', 'maca', 'limao', 'laranja', 'pera', 'melancia']
+        list_produtos = []
+        for produto in produtos:
+            p = Produto(descricao=produto,preco=10)
+            list_produtos.append(p)
+
+        Produto.objects.bulk_create(list_produtos)
+
+        return HttpResponse('funcionou')
