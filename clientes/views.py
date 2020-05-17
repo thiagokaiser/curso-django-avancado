@@ -9,7 +9,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 @login_required
 def persons_list(request):
     persons = Person.objects.all()
-    return render(request, 'person.html', {'persons': persons})
+    teste_filter = 'ola'
+    return render(request, 'person.html', {'persons': persons, 'teste_filter': teste_filter})
 
 @login_required
 def persons_new(request):

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load filters %}
 
 {% block title %} Administracao {% endblock %}
 
@@ -33,6 +33,10 @@
             {% endif %}
         </div>
     </div>
+    <br>
+    {{ teste_filter | my_filter }} <br>
+    {{ 1.1191 | arredonda:2 }}
+
 {% endblock %}
 
 {% block footer %}
