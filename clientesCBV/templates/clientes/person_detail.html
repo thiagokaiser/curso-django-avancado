@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h2>Person Detail</h2>
+    Nome: {{ object.first_name }} <br>
+    Sobrenome: {{ object.last_name }}
+    <br><br>
+    <a class="btn btn-primary" href="{% url 'clientesCBV:person_update_cbv' object.pk %}">Alterar</a>
+    <a class="btn btn-primary" href="{% url 'clientesCBV:person_delete_cbv' object.pk %}">Deletar</a>
+    <br>
+    {{ now }}
+{% endblock %}

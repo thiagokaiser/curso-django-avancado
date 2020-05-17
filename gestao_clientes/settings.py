@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
-    'clientes',
+    'clientesFBV',
+    'clientesCBV',
     'home',
 ]
 
@@ -126,7 +127,7 @@ MEDIA_ROOT = 'media'
 
 LOGIN_URL = '/login/'
 
-LOGIN_REDIRECT_URL = 'person_list'
+LOGIN_REDIRECT_URL = '/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
