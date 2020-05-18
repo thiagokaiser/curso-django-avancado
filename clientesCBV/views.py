@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
 from django.urls import reverse_lazy
-from clientesFBV.models import Person, Produto
+from clientesFBV.models import Person, Produto, Venda
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, View
 
 class PersonList(ListView):
@@ -12,9 +12,15 @@ class PersonList(ListView):
 class PersonDetail(DetailView):
     template_name = 'clientes/person_detail.html'
     model = Person
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        return Person.objects.select_related('doc').get(id=pk)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context['vendas'] = Venda.objects.filter(pessoa_id=self.object.id)
         return context
 
 class PersonCreate(CreateView):

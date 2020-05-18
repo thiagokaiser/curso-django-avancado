@@ -31,3 +31,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+admin.site.site_header = 'Gestao de Clientes'
+admin.site.index_title = 'Administracao'
+admin.site.site_title = 'Seja bem vindo ao Gestao de Clientes'
