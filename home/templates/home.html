@@ -5,6 +5,6 @@
 {% block main %}
     <h3>Apps:</h3>
     <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-    <a href="{% url 'clientesFBV:person_list' %}" class="btn btn-primary">Clientes FBV</a>
-    <a href="{% url 'clientesCBV:person_list_cbv' %}" class="btn btn-primary">Clientes CBV</a>
+    <a href="{% url 'clientes:person_list' %}" class="btn btn-primary">Clientes FBV</a>
+    <a href="{% url 'clientes:person_list_cbv' %}" class="btn btn-primary">Clientes CBV</a>
 {% endblock %}

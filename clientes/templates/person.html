@@ -5,19 +5,20 @@
 {% block title %} Administracao {% endblock %}
 
 {% block main %}
-    <h3>Listagem de clientes</h3>
+    <h3>Listagem de clientes FBV</h3>
+    <br>
     <ul class="list-group">
         {% for person in persons %}
             <li class="list-group-item">
-                <a href="{% url 'clientesFBV:persons_update' person.id %}">{{ person.first_name }}</a>
-                <a href="{% url 'clientesFBV:persons_delete' person.id %}" class="trash-item">
+                <a href="{% url 'clientes:persons_update' person.id %}">{{ person.first_name }}</a>
+                <a href="{% url 'clientes:persons_delete' person.id %}" class="trash-item">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>
             </li>
         {% endfor %}
     </ul>
     <br>
-    <a href="{% url 'clientesFBV:person_new' %}" class="btn btn-primary"> Novo cliente</a>
+    <a href="{% url 'clientes:person_new' %}" class="btn btn-primary"> Novo cliente</a>
 {% endblock %}
 
 {% block footer %}
