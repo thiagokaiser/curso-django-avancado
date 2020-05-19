@@ -1,6 +1,12 @@
-Home3
-{{ minha_variavel }}
-
+<h2>Teste CBV</h2>
+{% if minha_variavel %}
+    <p>{{ minha_variavel }}</p>
+{% else %}
+    <p>View</p>
+{% endif %}
+<br>
+<p>{{ message }}</p>
+<br>
 <form action="" method="post">
     {% csrf_token %}
     <input type="submit" value="Enviar">

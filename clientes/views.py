@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from .forms import PersonForm
 from django.http import HttpResponse
@@ -99,12 +99,26 @@ class TesteTemplateView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['minha_variavel'] = 'testando templateview'
+        context['minha_variavel'] = 'TemplateView'
+
+        primeiro_acesso = self.request.session.get('primeiro_acesso', False)
+        if not primeiro_acesso:
+            context['message'] = 'Seja bem vindo'
+            self.request.session['primeiro_acesso'] = True
+        else:
+            context['message'] = 'Voce ja acessou hoje'
+
         return context
 
 class TesteView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'testeCBV.html')
+        response = render_to_response('testeCBV.html')
+
+        response.set_cookie('color','blue', max_age=1000)
+        mycookie = request.COOKIES.get('color')
+        print(mycookie)
+
+        return response
 
     def post(self, request):
         return HttpResponse('result post')
