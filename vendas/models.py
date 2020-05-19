@@ -16,6 +16,13 @@ class Venda(models.Model):
 
     objects = VendaManager()
 
+    class Meta:
+        permissions = {
+            ('setar_nfe','Usuario pode alterar parametro NFe'),
+            ('ver_dashboard', 'Pode visualizar dashboard'),
+            ('permissao3', 'Permissao 3'),
+        }
+
     def __str__(self):
         return self.numero + ' - ' + self.pessoa.first_name
 

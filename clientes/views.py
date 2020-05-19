@@ -4,6 +4,7 @@ from .forms import PersonForm
 from django.http import HttpResponse
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from clientes.models import Person
 from produtos.models import Produto
 from vendas.models import Venda
@@ -17,6 +18,9 @@ def persons_list(request):
 
 @login_required
 def persons_new(request):
+    if not request.user.has_perm('clientes.add_person'):
+        return HttpResponse('nao autorizado')
+
     form = PersonForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
@@ -51,12 +55,14 @@ def tags_filters(request):
 
 
 ####### CBV ########
-class PersonList(ListView):
+class PersonList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     template_name = 'clientesCBV/person_list.html'
+    permission_required = ('clientes.list_person')
     model = Person
 
-class PersonDetail(DetailView):
+class PersonDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     template_name = 'clientesCBV/person_detail.html'
+    permission_required = ('clientes.list_person')
     model = Person
 
     def get_object(self, queryset=None):
@@ -69,7 +75,7 @@ class PersonDetail(DetailView):
         context['vendas'] = Venda.objects.filter(pessoa_id=self.object.id)
         return context
 
-class PersonCreate(CreateView):
+class PersonCreate(LoginRequiredMixin, CreateView):
     template_name = 'clientesCBV/person_form.html'
     model = Person
     fields = ['first_name','last_name','age','salary','bio','photo']
@@ -77,18 +83,18 @@ class PersonCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('clientes:person_list_cbv')
 
-class PersonUpdate(UpdateView):
+class PersonUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'clientesCBV/person_update_form.html'
     model = Person
     fields = ['first_name', 'last_name', 'age', 'salary', 'bio', 'photo']
     success_url =  reverse_lazy('clientes:person_list_cbv')
 
-class PersonDelete(DeleteView):
+class PersonDelete(LoginRequiredMixin, DeleteView):
     template_name = 'clientesCBV/person_confirm_delete.html'
     model = Person
     success_url =  reverse_lazy('clientes:person_list_cbv')
 
-class TesteTemplateView(TemplateView):
+class TesteTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'testeCBV.html'
 
     def get_context_data(self, **kwargs):
@@ -96,14 +102,14 @@ class TesteTemplateView(TemplateView):
         context['minha_variavel'] = 'testando templateview'
         return context
 
-class TesteView(View):
+class TesteView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'testeCBV.html')
 
     def post(self, request):
         return HttpResponse('result post')
 
-class ProdutoBulk(View):
+class ProdutoBulk(LoginRequiredMixin, View):
     def get(self, request):
         produtos = ['banana', 'maca', 'limao', 'laranja', 'pera', 'melancia']
         list_produtos = []
