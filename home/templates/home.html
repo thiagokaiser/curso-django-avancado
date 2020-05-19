@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %} Seja bem vindo {% endblock %}
+{% block title %} {{ request.session.message }} {% endblock %}
 
 {% block main %}
+    <h3>{{ request.session.message }}</h3>
     <h3>Apps:</h3>
     <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
     <a href="{% url 'clientes:person_list' %}" class="btn btn-primary">Clientes FBV</a>
