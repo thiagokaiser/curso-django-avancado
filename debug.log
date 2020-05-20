@@ -1,0 +1,61 @@
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5' AND "django_session"."expire_date" > '2020-05-20 19:29:13.108794'); args=('593zvb7250um4ozt3ynjq87ls7o991c5', '2020-05-20 19:29:13.108794')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Acessaram a listagem de vendas
+(0.000) SELECT "vendas_venda"."id", "vendas_venda"."numero", "vendas_venda"."valor", "vendas_venda"."desconto", "vendas_venda"."impostos", "vendas_venda"."pessoa_id", "vendas_venda"."nfe_emitida" FROM "vendas_venda"; args=()
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 1; args=(1,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 2; args=(2,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 12; args=(12,)
+(0.000) BEGIN; args=None
+(0.001) UPDATE "django_session" SET "session_data" = 'ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', "expire_date" = '2020-06-03 19:29:13.129811' WHERE "django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5'; args=('ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', '2020-06-03 19:29:13.129811', '593zvb7250um4ozt3ynjq87ls7o991c5')
+"GET /vendas/ HTTP/1.1" 200 2956
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5' AND "django_session"."expire_date" > '2020-05-20 19:32:04.897734'); args=('593zvb7250um4ozt3ynjq87ls7o991c5', '2020-05-20 19:32:04.897734')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Acessaram a listagem de vendas
+division by zero
+(0.000) SELECT "vendas_venda"."id", "vendas_venda"."numero", "vendas_venda"."valor", "vendas_venda"."desconto", "vendas_venda"."impostos", "vendas_venda"."pessoa_id", "vendas_venda"."nfe_emitida" FROM "vendas_venda"; args=()
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 1; args=(1,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 2; args=(2,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 12; args=(12,)
+(0.000) BEGIN; args=None
+(0.001) UPDATE "django_session" SET "session_data" = 'ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', "expire_date" = '2020-06-03 19:32:04.936748' WHERE "django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5'; args=('ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', '2020-06-03 19:32:04.936748', '593zvb7250um4ozt3ynjq87ls7o991c5')
+"GET /vendas/ HTTP/1.1" 200 2956
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5' AND "django_session"."expire_date" > '2020-05-20 19:38:09.549291'); args=('593zvb7250um4ozt3ynjq87ls7o991c5', '2020-05-20 19:38:09.549291')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Acessaram a listagem de vendas
+2020-05-20 16:38:09 - kaiser
+Traceback (most recent call last):
+  File "C:\Web\django\curso-django-avancado\vendas\views.py", line 85, in get
+    1/0
+ZeroDivisionError: division by zero
+(0.001) SELECT "vendas_venda"."id", "vendas_venda"."numero", "vendas_venda"."valor", "vendas_venda"."desconto", "vendas_venda"."impostos", "vendas_venda"."pessoa_id", "vendas_venda"."nfe_emitida" FROM "vendas_venda"; args=()
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 1; args=(1,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 2; args=(2,)
+(0.000) SELECT "clientes_person"."id", "clientes_person"."first_name", "clientes_person"."last_name", "clientes_person"."age", "clientes_person"."salary", "clientes_person"."bio", "clientes_person"."photo", "clientes_person"."doc_id" FROM "clientes_person" WHERE "clientes_person"."id" = 12; args=(12,)
+(0.000) BEGIN; args=None
+(0.002) UPDATE "django_session" SET "session_data" = 'ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', "expire_date" = '2020-06-03 19:38:09.577275' WHERE "django_session"."session_key" = '593zvb7250um4ozt3ynjq87ls7o991c5'; args=('ZmY0MmI4YTRiZjlmYzViMzIxZTkzNDhiYWU0ZmY0YzM3NzRjNjhmMzp7Im1lc3NhZ2UiOiJPbGEga2Fpc2VyLCBib20gZGlhISIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhOWZhODMyZDkzZGRmNGFjYmQ1YTJjZmJmNDE0MWEzZTY1NDk3M2Y2In0=', '2020-06-03 19:38:09.577275', '593zvb7250um4ozt3ynjq87ls7o991c5')
+"GET /vendas/ HTTP/1.1" 200 2956
+2020-05-20 16:41:42 - kaiser
+Traceback (most recent call last):
+  File "C:\Web\django\curso-django-avancado\vendas\views.py", line 85, in get
+    1/0
+ZeroDivisionError: division by zero
+2020-05-20 16:41:50 - kaiser
+Traceback (most recent call last):
+  File "C:\Web\django\curso-django-avancado\vendas\views.py", line 85, in get
+    1/0
+ZeroDivisionError: division by zero

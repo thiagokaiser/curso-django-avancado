@@ -4,6 +4,10 @@ from django.contrib import messages
 from .models import Venda, VendaProduto
 from clientes.models import Person
 from .forms import VendaProdutoForm
+import logging
+import datetime
+
+logger = logging.getLogger('django')
 
 class DashboardView(View):
     def dispatch(self, request, *args, **kwargs):
@@ -76,6 +80,14 @@ class NovoProdVenda(View):
 
 class ListaVendas(View):
     def get(self, request):
+        logger.debug('Acessaram a listagem de vendas')
+        try:
+            1/0
+        except Exception as e:
+            time = datetime.datetime.now()
+            logger.exception(time.strftime("%Y-%m-%d %H:%M:%S") + ' - ' + str(request.user))
+            #logger.error(str(e))
+
         data = {}
         data['vendas'] = Venda.objects.all()
         return render(request,'vendas/venda_list.html', data)

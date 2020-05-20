@@ -148,3 +148,22 @@ DEFAULT_FROM_EMAIL = 'kaiserdesenv@gmail.com'
 SERVER_EMAIL = 'kaiserdesenv@gmail.com'
 
 ADMINS = [('kaiser','kaiserdesenv@gmail.com'),]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
