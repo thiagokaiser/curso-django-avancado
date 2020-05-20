@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h3> Tem certeza que deseja deletar a venda: "{{ prod }}" ?</h3>
+
+<form action="{% url 'vendas:del_prod_venda' prod.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Deletar</button>
+</form>
+{% endblock %}
