@@ -59,3 +59,25 @@ Traceback (most recent call last):
   File "C:\Web\django\curso-django-avancado\vendas\views.py", line 85, in get
     1/0
 ZeroDivisionError: division by zero
+Internal Server Error: /clientes/cbv/
+Traceback (most recent call last):
+  File "C:\Web\django\venv\lib\site-packages\django\core\handlers\exception.py", line 35, in inner
+    response = get_response(request)
+  File "C:\Web\django\venv\lib\site-packages\django\core\handlers\base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Web\django\venv\lib\site-packages\django\core\handlers\base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Web\django\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Web\django\venv\lib\site-packages\django\contrib\auth\mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Web\django\venv\lib\site-packages\django\contrib\auth\mixins.py", line 85, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Web\django\venv\lib\site-packages\django\views\generic\base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Web\django\venv\lib\site-packages\django\views\generic\list.py", line 142, in get
+    self.object_list = self.get_queryset()
+  File "C:\Web\django\curso-django-avancado\clientes\views.py", line 80, in get_queryset
+    return Person.objects.filter(first_name__icontains=search) |  Person.objects.filter(last_name__icontains=search)
+NameError: name 'search' is not defined
+"GET /clientes/cbv/?search=t HTTP/1.1" 500 93284

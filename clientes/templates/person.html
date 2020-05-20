@@ -7,10 +7,16 @@
 {% block main %}
     <h3>Listagem de clientes FBV</h3>
     <br>
+    <form method="get">
+        <input type="text" name="search" placeholder="Busca" value="{{ search }}">
+        <button type="submit">Pesquisar</button>
+    </form>
+    <br>
     <ul class="list-group">
         {% for person in persons %}
+
             <li class="list-group-item">
-                <a href="{% url 'clientes:persons_update' person.id %}">{{ person.first_name }}</a>
+                <a href="{% url 'clientes:persons_update' person.id %}">{{ person.first_name }} {{ person.last_name }}</a>
                 <a href="{% url 'clientes:persons_delete' person.id %}" class="trash-item">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </a>

@@ -3,10 +3,15 @@
 {% block main %}
 <h3>Listagem de clientes CBV</h3>
 <br>
+<form method="get">
+    <input type="text" name="search" placeholder="Busca" value="{{ search }}">
+    <button type="submit">Pesquisar</button>
+</form>
+<br>
 <ul class="list-group">
     {% for person in object_list %}
         <li class="list-group-item">
-            <a href="{% url 'clientes:person_detail_cbv' person.pk %}">{{ person.first_name }}</a>
+            <a href="{% url 'clientes:person_detail_cbv' person.pk %}">{{ person.first_name }} {{ person.last_name }}</a>
             <a href="{% url 'clientes:person_delete_cbv' person.pk %}" class="trash-item">
                 <i class="fa fa-trash" aria-hidden="true"></i>
             </a>

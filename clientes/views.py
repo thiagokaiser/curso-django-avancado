@@ -11,11 +11,16 @@ from produtos.models import Produto
 from vendas.models import Venda
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView, View
 
-####### FBV ########
+############# FBV #############
 @login_required
 def persons_list(request):
-    persons = Person.objects.all()
-    return render(request, 'person.html', {'persons': persons})
+    search = request.GET.get('search', '')
+    if search == '':
+        persons = Person.objects.all()
+    else:
+        persons = Person.objects.filter(first_name__icontains=search) |  Person.objects.filter(last_name__icontains=search)
+
+    return render(request, 'person.html', {'persons': persons, 'search': search})
 
 @login_required
 def persons_new(request):
@@ -59,11 +64,21 @@ def api(request):
     result = model_to_dict(prod)
     return JsonResponse(result, status=200)
 
-####### CBV ########
+############# CBV #############
 class PersonList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     template_name = 'clientesCBV/person_list.html'
     permission_required = ('clientes.list_person')
     model = Person
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search'] = self.request.GET.get('search', '')
+        return context
+
+    def get_queryset(self):
+        search = self.request.GET.get('search', '')
+        return Person.objects.filter(first_name__icontains=search) |  Person.objects.filter(last_name__icontains=search)
+
 
 class PersonDetail(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     template_name = 'clientesCBV/person_detail.html'
