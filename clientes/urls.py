@@ -3,7 +3,7 @@ from .views import persons_list
 from .views import persons_new
 from .views import persons_update
 from .views import persons_delete
-from .views import tags_filters
+from .views import tags_filters, api
 from .views import PersonList, PersonDetail
 from .views import PersonCreate, PersonUpdate, PersonDelete
 from .views import TesteView, TesteTemplateView, ProdutoBulk
@@ -16,6 +16,7 @@ urlpatterns = [
     path('update/<int:id>/', persons_update, name="persons_update"),
     path('delete/<int:id>/', persons_delete, name="persons_delete"),
     path('tags_filters/', tags_filters, name="tags_filters"),
+    path('api/', api, name="api"),
     path('cbv/', PersonList.as_view(), name="person_list_cbv"),
     path('cbv/detail/<int:pk>/', PersonDetail.as_view(), name="person_detail_cbv"),
     path('cbv/new/', PersonCreate.as_view(), name="person_new_cbv"),

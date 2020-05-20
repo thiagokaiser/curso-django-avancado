@@ -1,7 +1,8 @@
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from .forms import PersonForm
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -53,6 +54,10 @@ def tags_filters(request):
     teste_filter = 'Ola mundo'
     return render(request,'tags_filters.html', {'teste_filter': teste_filter})
 
+def api(request):
+    prod = Produto.objects.last()
+    result = model_to_dict(prod)
+    return JsonResponse(result, status=200)
 
 ####### CBV ########
 class PersonList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
